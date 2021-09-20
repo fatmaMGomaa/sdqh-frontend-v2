@@ -1,0 +1,11 @@
+@import "../../variables.scss";
+.navbar__container{
+  a.navbar-brand{
+    margin-right: 0;
+  }
+  .navbar-nav{
+    a.nav-link{
+      color: $dark-blue;
+    }
+  }
+}

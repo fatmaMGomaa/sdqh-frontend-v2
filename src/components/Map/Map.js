@@ -1,40 +1,31 @@
 import React, {useEffect} from 'react';
-import {GoogleMap, useLoadScript, Marker, InfoWindow} from "@react-google-maps/api";
+import GoogleMapReact from 'google-map-react';
+
+import Marker from '..//Marker/Marker';
 
 import './Map.scss';
-
-const libraries = ['places'];
-
-const mapContainerStyle = {
-  width: '50%',
-  height: '70vh'
-};
+import mapStyles from './mapStyles';
 
 const Map = ({ coords={ lat: 30.033333, lng: 31.233334 }, cases, setCoords, setBounds }) => {
 
-  const [markers, setMarkers] = React.useState([])
-
-  const{isLoaded, loadError} = useLoadScript({
-    googleMapsApiKey: '',
-    libraries
-  });
-
-  if (loadError) return "Error loading Maps";
-  if (!isLoaded) return "Loading Maps";
-
   return (
     <div className='map-container'>
-        <GoogleMap 
-          mapContainerStyle={mapContainerStyle} 
-          zoom={15} 
-          center={coords} 
-          options={{ disableDefaultUI: true}}
-          // onClick={(e)=> {
-          //   setMarkers(current => [...current, {lat: e.latLng.lat(), lng: e.latLng.lng()}])
-          // }}
-        >
-          {cases.map(singlle_case => <Marker key= {singlle_case.id} position={{lat: parseFloat(singlle_case.lat), lng: parseFloat(singlle_case.lng)}}/>)}
-        </GoogleMap >
+      <GoogleMapReact 
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
+        defaultCenter={coords}
+        center={coords}
+        defaultZoom={14}
+        margin={[50, 50, 50, 50]}
+        options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}
+        onChange={(e) => {
+          console.log(e)
+          // setCoords({ lat: e.center.lat, lng: e.center.lng });
+          // setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+        }}
+        // onChildClick={(child) => setChildClicked(child)}
+      >
+        {cases.map(singlle_case => <Marker key= {singlle_case.id} lat={parseFloat(singlle_case.lat)} lng={parseFloat(singlle_case.lng)} text="My Marker"/>)}
+      </GoogleMapReact>
     </div>
   )
 }

@@ -9,8 +9,8 @@ const Human = () => {
 
   useEffect(() => {
 
-    navigator.geolocation.getCurrentPosition(function(position) {
-      setCoordes({lat: position.coords.latitude, lng: position.coords.longitude });
+    navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
+      setCoordes({lat: latitude, lng: longitude });
     });
     
     const fetchData = async () => {

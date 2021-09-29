@@ -11,7 +11,7 @@ import Charity from './components/Charity/Charity';
 
 const App = () => {
   return (
-    <div>
+    <>
       <NavBar />
       <Router>
         <main>
@@ -25,7 +25,7 @@ const App = () => {
         </main>
       </Router>
       <Footer />
-    </div>
+    </>
   );
 }
 

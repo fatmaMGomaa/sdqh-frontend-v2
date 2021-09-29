@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import GoogleMapReact from 'google-map-react';
 
-import Marker from '..//Marker/Marker';
+import Marker from '../Marker/Marker';
 
 import './Map.scss';
 import mapStyles from './mapStyles';

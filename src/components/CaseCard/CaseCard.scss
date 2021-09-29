@@ -1,0 +1,44 @@
+@import "../../variables.scss";
+
+.card-container{
+  padding: 10px 10px 10px 0;
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 400){
+    width: 300px;
+  }
+
+  .card-container__img{
+    display: block;
+    width: 90px;
+    height: 90px;
+    margin-left: 10px;
+    border-radius: 10px;
+    @media (max-width: 400){
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .card-container__content{
+    margin-top: 10px;
+    h3{
+      font-size: 20px;
+      @media (max-width: 400){
+        font-size: 16px;
+      }
+    }
+  }
+
+  .card-container__button{
+   border: none;
+   border-radius: 0 7px 7px 0;
+   background-color: $dark-blue;
+   padding: 7px 14px;
+   margin-right: 5px;
+  }
+}

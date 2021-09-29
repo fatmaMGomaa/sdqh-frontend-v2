@@ -1,7 +1,12 @@
 import React, {useEffect} from 'react';
 import axios from 'axios';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-import Map from '../Map/Map'
+
+import Map from '../Map/Map';
+import Cases from '../Cases/Cases';
 
 const Animal = () => {
 
@@ -25,9 +30,19 @@ const Animal = () => {
   },[]) 
 
   return (
-    <div>
-      <Map cases={cases} coords={coords}/>
-    </div>
+    
+    <Container>
+      <Row>filter</Row>
+      <Row>
+        <Col>
+          <Map cases={cases} coords={coords}/>
+        </Col>
+        <Col>
+        <Cases cases={cases}/>
+        </Col>
+      </Row>
+    </Container>
+   
   )
 }
 

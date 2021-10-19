@@ -7,6 +7,7 @@ import Animal from './components/Animal/Animal';
 import Human from './components/Human/Human';
 import Home from './components/Home/Home';
 import Charity from './components/Charity/Charity';
+import SignUp from './components/SignUp/SignUp';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
             <Route path='/human' exact component={Human} />
             <Route path='/animal' exact component={Animal} />
             <Route path='/charity' exact component={Charity} />
+            <Route path='/signup' exact component={SignUp} />
             <Redirect to='/' />
           </Switch>
         </main>

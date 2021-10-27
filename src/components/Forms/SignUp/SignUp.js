@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { saveToLocalStorage } from "../../util/localStorage";
+import axios from 'axios';
+import { saveToLocalStorage } from "../../../util/localStorage";
 
-const SignUp = () => {
-  const initial_values = {first_name: '', last_name: '', email: '', password: '', gender: '', birthdate: '', image: ''}
+const SignUp = ({edit=false}) => {
+  const url = process.env.REACT_APP_BACKEND_URL;
+  const initial_values = {firstName: '', lastName: '', email: '', password: '', gender: 'male', birthDate: '', image: ''}
   const [formValues, setFormValues] = useState(initial_values);
   const [formErrors, setFormErrors] = useState({});
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   
 
-  useEffect(() => {
-    if(Object.keys(formErrors).length === 0){
-      console.log(formValues);
-    }
-  }, [formErrors])
+  // useEffect(() => {
+  //   if(edit){
+
+  //   }
+  // }, [])
 
   const handleOnChange = (e) => {
     const {name, value} = e.target;
@@ -21,7 +24,21 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validateValues(formValues));
-
+    if(Object.keys(formErrors).length === 0){
+      axios
+        .post(`${url}/signup`, formValues)
+        .then(response => {
+          console.log(response);
+          localStorage.clear();
+          saveToLocalStorage("token", response.data.token);
+          saveToLocalStorage("userId", response.data.user.id);
+          saveToLocalStorage("user", response.data.user);
+          // window.location.replace(process.env.REACT_APP_FRONTEND_URL);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
   }
 
   const validateValues = (values) => {
@@ -29,11 +46,11 @@ const SignUp = () => {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     
 
-    if(!values.first_name){
-      errors.first_name = 'First Name Is Required'
+    if(!values.firstName){
+      errors.firstName = 'First Name Is Required'
     }
-    if(!values.lastt_name){
-      errors.last_name = 'Last Name Is Required'
+    if(!values.lastName){
+      errors.lastName = 'Last Name Is Required'
     }
     if(!values.email){
       errors.email = 'Email Is Required'
@@ -48,8 +65,8 @@ const SignUp = () => {
     if(!values.gender){
       errors.gender = 'Gender Is Required'
     }
-    if(!values.birthdate){
-      errors.birthdate = 'Birth Date Is Required'
+    if(!values.birthDate){
+      errors.birthDate = 'Birth Date Is Required'
     }
     return errors;
   }
@@ -59,13 +76,13 @@ const SignUp = () => {
     <div className='signup-container'>
       <form method="POST" name="signup" id="signup" onSubmit={handleSubmit}>
         <div className='signup-container__field'>
-            <label>الاسم الأول: <input type="text" onChange={handleOnChange} name="first_name" id="first_name" required /></label>
+            <label>الاسم الأول: <input type="text" onChange={handleOnChange} name="firstName" id="firstName" required /></label>
         </div>
-        <p>{formErrors.first_name}</p>
+        <p>{formErrors.firstName}</p>
         <div className='signup-container__field'>
-            <label>اسم العائلة: <input type="text" onChange={handleOnChange} name="last_name" id="last_name" required /></label>
+            <label>اسم العائلة: <input type="text" onChange={handleOnChange} name="lastName" id="lastName" required value={formValues['lastName']} /></label>
         </div>
-        <p>{formErrors.last_name}</p>
+        <p>{formErrors.lastName}</p>
         <div className='signup-container__field'><label>الإيميل: <input type="email" onChange={handleOnChange} name="email" id="email" required /></label></div>
         <p>{formErrors.email}</p>
         <div className='signup-container__field'><label>كلمة المرور: <input type="password" onChange={handleOnChange} name="password" id="password" required /></label></div>
@@ -81,8 +98,8 @@ const SignUp = () => {
               </label>
           </div>
           <p>{formErrors.gender}</p>
-          <div><label>تاريخ الميلاد: <input type="date" onChange={handleOnChange} name="birthdate" id="birthdate" required /></label></div>
-          <p>{formErrors.birthdate}</p>
+          <div><label>تاريخ الميلاد: <input type="date" onChange={handleOnChange} name="birthDate" id="birthDate" required /></label></div>
+          <p>{formErrors.birthDate}</p>
         </div>
         <div className='signup-container__field'>
             <label>لينك الصورة*<input type="url" onChange={handleOnChange} name="image" id="image"/></label>

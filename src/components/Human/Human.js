@@ -19,7 +19,7 @@ const Human = () => {
     
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}allCases?caseType=human`);
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/allCases?caseType=human`);
         setCases(res.data.cases)
       } catch (error) {
         console.log(error);

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { saveToLocalStorage } from "../../../util/localStorage";
 
+import '../Form.scss';
+
 const LogIn = () => {
   const url = process.env.REACT_APP_BACKEND_URL;
   const initial_values = {email: '', password: ''}
@@ -25,7 +27,7 @@ const LogIn = () => {
           saveToLocalStorage("token", response.data.token);
           saveToLocalStorage("user", response.data.user)
           saveToLocalStorage("userId", response.data.user.id);
-          window.location.replace(process.env.REACT_APP_FRONTEND_URL);
+          // window.location.replace(process.env.REACT_APP_FRONTEND_URL);
         })
         .catch(error => {
           console.log(error);
@@ -52,15 +54,21 @@ const LogIn = () => {
 
 
   return (
-    <div className='login-container'>
-      <form method="POST" name="login" id="login" onSubmit={handleLogin}>
+    <div className='form-container'>
+      <form method="POST" name="login" id="login" className='form' onSubmit={handleLogin}>
         
-        <div className='login-container__field'><label>الإيميل: <input type="email" onChange={handleOnChange} name="email" id="email" required /></label></div>
-        <p>{formErrors.email}</p>
-        <div className='login-container__field'><label>كلمة المرور: <input type="password" onChange={handleOnChange} name="password" id="password" required /></label></div>
-        <p>{formErrors.password}</p>
+        <div className='form__field'>
+          <input type="email" onChange={handleOnChange} name="email" className='form__input' placeholder=" " required />
+          <label className='form__label' htmlFor=''>الإيميل</label>
+        </div>
+        <p className='form__p'>{formErrors.email}</p>
+        <div className='form__field'>
+          <input type="password" onChange={handleOnChange} name="password" className='form__input' placeholder=" " required />
+          <label className='form__label' htmlFor=''>كلمة المرور</label>
+        </div>
+        <p className='form__p'>{formErrors.password}</p>
         
-        <button onClick={handleLogin} type='submit'>دخول</button>
+        <input type='submit' value="الدخول" className='form__button'/>
       </form>
     </div>
   )

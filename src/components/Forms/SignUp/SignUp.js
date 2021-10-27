@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { saveToLocalStorage } from "../../../util/localStorage";
 
+import '../Form.scss';
+
 const SignUp = ({edit=false}) => {
   const url = process.env.REACT_APP_BACKEND_URL;
   const initial_values = {firstName: '', lastName: '', email: '', password: '', gender: 'male', birthDate: '', image: ''}
@@ -73,39 +75,46 @@ const SignUp = ({edit=false}) => {
 
 
   return (
-    <div className='signup-container'>
-      <form method="POST" name="signup" id="signup" onSubmit={handleSubmit}>
-        <div className='signup-container__field'>
-            <label>الاسم الأول: <input type="text" onChange={handleOnChange} name="firstName" id="firstName" required /></label>
+    <div className='form-container'>
+      <form method="POST" name="signup" id="signup" className='form' onSubmit={handleSubmit}>
+        <div className='form__field'>
+            <input type="text" onChange={handleOnChange} name="firstName" className='form__input' placeholder=" " required />
+            <label className='form__label' htmlFor=''>الاسم الأول</label>
         </div>
-        <p>{formErrors.firstName}</p>
-        <div className='signup-container__field'>
-            <label>اسم العائلة: <input type="text" onChange={handleOnChange} name="lastName" id="lastName" required value={formValues['lastName']} /></label>
+        <p className='form__p'>{formErrors.firstName}</p>
+        <div className='form__field'>
+            <input type="text" onChange={handleOnChange} name="lastName" className='form__input' placeholder=" " required />
+            <label className='form__label' htmlFor=''>اسم العائلة</label>
         </div>
-        <p>{formErrors.lastName}</p>
-        <div className='signup-container__field'><label>الإيميل: <input type="email" onChange={handleOnChange} name="email" id="email" required /></label></div>
-        <p>{formErrors.email}</p>
-        <div className='signup-container__field'><label>كلمة المرور: <input type="password" onChange={handleOnChange} name="password" id="password" required /></label></div>
-        <p>{formErrors.password}</p>
-        <div className='signup-container__field'>
-          <div>
-              <label>
-                  الجنس:
-                <select onChange={handleOnChange} name="gender" id="gender" required>
-                    <option value="male">ذكر</option>
-                    <option value="female">أنثى</option>
-                </select>
-              </label>
-          </div>
-          <p>{formErrors.gender}</p>
-          <div><label>تاريخ الميلاد: <input type="date" onChange={handleOnChange} name="birthDate" id="birthDate" required /></label></div>
-          <p>{formErrors.birthDate}</p>
+        <p className='form__p'>{formErrors.lastName}</p>
+        <div className='form__field'>
+          <input type="email" onChange={handleOnChange} name="email" className='form__input' placeholder=" " required />
+          <label className='form__label' htmlFor=''>الإيميل</label>
         </div>
-        <div className='signup-container__field'>
-            <label>لينك الصورة*<input type="url" onChange={handleOnChange} name="image" id="image"/></label>
+        <p className='form__p'>{formErrors.email}</p>
+        <div className='form__field'>
+          <input type="password" onChange={handleOnChange} name="password" className='form__input' placeholder=" " required />
+          <label className='form__label' htmlFor=''>كلمة المرور</label>
         </div>
-        <p>{formErrors.image}</p>
-        <button onClick={handleSubmit} type='submit'>إنشاء حساب جديد</button>
+        <p className='form__p'>{formErrors.password}</p>
+        <div className='form__field'>
+          <label>
+              الجنس:
+            <select onChange={handleOnChange} name="gender" className='form__select' required>
+                <option value="male">ذكر</option>
+                <option value="female">أنثى</option>
+            </select>
+          </label>
+        </div>
+          <p className='form__p'>{formErrors.gender}</p>
+        <div className='form__field'><label>تاريخ الميلاد: <input type="date" onChange={handleOnChange} name="birthDate" id="birthDate" required /></label></div>
+          <p className='form__p'>{formErrors.birthDate}</p>
+        <div className='form__field'>
+            <input type="url" onChange={handleOnChange} name="image" className='form__input' placeholder=" "/>
+            <label className='form__label' htmlFor=''>لينك الصورة</label>
+        </div>
+        <p className='form__p'>{formErrors.image}</p>
+        <input onClick={handleSubmit} type='submit' value='إنشاء حساب جديد' className='form__button'/>
       </form>
     </div>
   )

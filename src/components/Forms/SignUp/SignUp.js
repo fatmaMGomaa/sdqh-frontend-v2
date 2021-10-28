@@ -97,17 +97,18 @@ const SignUp = ({edit=false}) => {
           <label className='form__label' htmlFor=''>كلمة المرور</label>
         </div>
         <p className='form__p'>{formErrors.password}</p>
-        <div className='form__field'>
-          <label>
-              الجنس:
-            <select onChange={handleOnChange} name="gender" className='form__select' required>
-                <option value="male">ذكر</option>
-                <option value="female">أنثى</option>
-            </select>
-          </label>
+      <div className='form__field'>
+          <select onChange={handleOnChange} name="gender" className='form__input form__select' placeholder=" " required>
+              <option value="male">ذكر</option>
+              <option value="female">أنثى</option>
+          </select>
+          <label className='form__label' htmlFor=''> الجنس</label>
         </div>
           <p className='form__p'>{formErrors.gender}</p>
-        <div className='form__field'><label>تاريخ الميلاد: <input type="date" onChange={handleOnChange} name="birthDate" id="birthDate" required /></label></div>
+        <div className='form__field'>
+          <input type="date" onChange={handleOnChange} name="birthDate" className='form__input form__date' required />
+          <label className='form__label' htmlFor='start'>تاريخ الميلاد</label>
+        </div>
           <p className='form__p'>{formErrors.birthDate}</p>
         <div className='form__field'>
             <input type="url" onChange={handleOnChange} name="image" className='form__input' placeholder=" "/>

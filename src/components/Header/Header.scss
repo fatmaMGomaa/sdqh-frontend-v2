@@ -1,0 +1,23 @@
+.navbar{
+  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 75px;
+  &__ul{
+    display: flex;
+    justify-content: flex-start;
+    list-style: none;
+    width: 85%;
+    padding: 0;
+    margin: 0;
+  }
+  &__link{
+    text-decoration: none;
+    padding: 20px;
+  }
+  &__button{
+    margin-right: auto;
+    order: 5;
+  }
+}

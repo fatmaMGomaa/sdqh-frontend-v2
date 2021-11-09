@@ -12,27 +12,30 @@ import login from './components/Forms/LogIn/LogIn';
 import EditUser from './components/Forms/EditUser/EditUser';
 import UserProfile from './components/UserProfile/UserProfile';
 import AddCase from './components/Forms/AddCase/AddCase';
-
+import Header from './components/Header/Header';
+import {UserProvider} from './Contexts/UserProvider'
 
 const App = () => {
   return (
     <>
-      <NavBar />
       <Router>
-        <main>
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/human' exact component={Human} />
-            <Route path='/animal' exact component={Animal} />
-            <Route path='/charity' exact component={Charity} />
-            <Route path='/signup' exact component={SignUp} />
-            <Route path='/login' exact component={login} />
-            <Route path='/profile' exact component={UserProfile} />
-            <Route path='/edituser' exact component={EditUser} />
-            <Route path='/addcase' exact component={AddCase} />
-            <Redirect to='/' />
-          </Switch>
-        </main>
+        <UserProvider>
+          <Header />
+          <main>
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path='/human' exact component={Human} />
+              <Route path='/animal' exact component={Animal} />
+              <Route path='/charity' exact component={Charity} />
+              <Route path='/signup' exact component={SignUp} />
+              <Route path='/login' exact component={login} />
+              <Route path='/user/:id' exact component={UserProfile} />
+              <Route path='/user/:id/edit' exact component={EditUser} />
+              <Route path='/addcase' exact component={AddCase} />
+              <Redirect to='/' />
+            </Switch>
+          </main>
+        </UserProvider>
       </Router>
       <Footer />
     </>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { saveToLocalStorage } from "../../../util/localStorage";
+import {AuthContext} from '../../../Contexts/UserProvider'
 
 import '../Form.scss';
 
@@ -9,6 +10,7 @@ const LogIn = () => {
   const initial_values = {email: '', password: ''}
   const [formValues, setFormValues] = useState(initial_values);
   const [formErrors, setFormErrors] = useState({});
+  const {setLoggedUser, loggedUser, setIsLogged, setUserToken} = useContext(AuthContext);
 
   const handleOnChange = (e) => {
     const {name, value} = e.target;
@@ -27,7 +29,9 @@ const LogIn = () => {
           saveToLocalStorage("token", response.data.token);
           saveToLocalStorage("user", response.data.user)
           saveToLocalStorage("userId", response.data.user.id);
-          // window.location.replace(process.env.REACT_APP_FRONTEND_URL);
+          setLoggedUser( response.data.user);
+          setUserToken(response.data.token);
+          setIsLogged(true);
         })
         .catch(error => {
           console.log(error);

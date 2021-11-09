@@ -1,0 +1,48 @@
+@import "../../variables.scss";
+
+#user-info{
+    width: 25%;
+}
+#user-info img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: block;
+}
+#user-info, #user-info img{
+    margin: 0 auto;
+}
+#user-info h3{
+    text-align: center;
+}
+#edit{
+    color: #2196f3;
+}
+.wrapper{
+    display: block;
+}
+.humanContainer, .animalContainer{
+    width: 80%;
+    margin: 0 auto;
+}
+@media screen and (max-width: 900px) {
+    #user-info{
+    width: 50%;
+    }
+    #user-info img{
+    width: 150px;
+    height: 150px;
+    }
+}
+@media screen and (max-width: 767px) {
+    #user-info{
+    width: 100%;
+    }
+    #user-info img{
+    width: 100px;
+    height: 100px;
+    }
+    #user-info h2{
+    font-size: 120%;
+    }
+}

@@ -34,10 +34,13 @@
   }
 
   .card-container__button{
-   border: none;
-   border-radius: 0 7px 7px 0;
-   background-color: $dark-blue;
-   padding: 7px 14px;
-   margin-right: 5px;
+    border: none;
+    border-radius: 0 7px 7px 0;
+    background-color: $dark-blue;
+    padding: 7px 14px;
+    margin-right: 5px;
+    @include responsive-max($xs) {
+      font-size: $normal-font-size;
+    }
   }
 }

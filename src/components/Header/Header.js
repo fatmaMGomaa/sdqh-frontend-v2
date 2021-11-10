@@ -1,22 +1,24 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Header.scss';
 import logo from './logo3.png';
-import { getLocalStorageItem } from "../../util/localStorage";
 import { Link } from 'react-router-dom';
-import {AuthContext} from '../../Contexts/UserProvider'
-
-// const logged_user = getLocalStorageItem("user");
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import UserDropdown from './UserDropdown';
 
 const Header = () => {
-
-  const {loggedUser, log_out, isLogged} = useContext(AuthContext);
+  const [isMobile, setIsMobile] = useState(false)
 
   return (
     <header className='navbar'>
-      <h1 className='navbar__logo'><img src={logo} width="150" alt="sdqh logo"/></h1>
-      <ul className='navbar__ul'>
+    <Link to='/'><h1 className='navbar__logo'><img src={logo} width="150" alt="sdqh logo"/></h1></Link>
+      <div className='navbar__mobile-icon' onClick={()=> setIsMobile(!isMobile)}>
+        {isMobile ? <FontAwesomeIcon icon={faTimes} size='2x'/> : <FontAwesomeIcon icon={faBars} size='2x'/>}
+      </div>
+      <ul className={isMobile? 'navbar__mobile-ul': 'navbar__ul'} onClick={()=> setIsMobile(false)}>
         <li className='navbar__button navbar__link'>
-          {isLogged ? <button onClick={log_out}>الخروج</button> : <Link to='/login' className='navbar__link'> الدخول </Link>} 
+          <UserDropdown />
         </li>
         <Link to='/' className='navbar__link'>
           <li>الرئيسية</li>

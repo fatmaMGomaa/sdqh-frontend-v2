@@ -12,9 +12,9 @@ export const UserProvider = (props) => {
   useEffect(() => {
     const user = getLocalStorageItem("user");
     const token = getLocalStorageItem("token");
-    setLoggedUser(user)
-    setUserToken(token)
-    setIsLogged(true)
+    user && setLoggedUser(user)
+    token && setUserToken(token)
+    user && token && setIsLogged(true)
   },[]) 
 
   const log_out = () => {

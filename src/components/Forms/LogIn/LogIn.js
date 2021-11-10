@@ -10,7 +10,7 @@ const LogIn = () => {
   const initial_values = {email: '', password: ''}
   const [formValues, setFormValues] = useState(initial_values);
   const [formErrors, setFormErrors] = useState({});
-  const {setLoggedUser, loggedUser, setIsLogged, setUserToken} = useContext(AuthContext);
+  const {setLoggedUser, isLogged, setIsLogged, setUserToken} = useContext(AuthContext);
 
   const handleOnChange = (e) => {
     const {name, value} = e.target;
@@ -57,25 +57,28 @@ const LogIn = () => {
   }
 
 
-  return (
-    <div className='form-container'>
-      <form method="POST" name="login" id="login" className='form' onSubmit={handleLogin}>
-        
-        <div className='form__field'>
-          <input type="email" onChange={handleOnChange} name="email" className='form__input' placeholder=" " required />
-          <label className='form__label' htmlFor=''>الإيميل</label>
-        </div>
-        <p className='form__p'>{formErrors.email}</p>
-        <div className='form__field'>
-          <input type="password" onChange={handleOnChange} name="password" className='form__input' placeholder=" " required />
-          <label className='form__label' htmlFor=''>كلمة المرور</label>
-        </div>
-        <p className='form__p'>{formErrors.password}</p>
-        
-        <input type='submit' value="الدخول" className='form__button'/>
-      </form>
-    </div>
-  )
+  if(isLogged){
+      return(
+        <p className='login__p'>لقد قمت بالدخول مسبقا</p>
+      )
+    } else {
+      return(
+        <div className='form-container'>
+          <form method="POST" name="login" id="login" className='form' onSubmit={handleLogin}>
+            <div className='form__field'>
+              <input type="email" onChange={handleOnChange} name="email" className='form__input' placeholder=" " required />
+              <label className='form__label' htmlFor=''>الإيميل</label>
+            </div>
+            <p className='form__p'>{formErrors.email}</p>
+            <div className='form__field'>
+              <input type="password" onChange={handleOnChange} name="password" className='form__input' placeholder=" " required />
+              <label className='form__label' htmlFor=''>كلمة المرور</label>
+            </div>
+            <p className='form__p'>{formErrors.password}</p>
+            <input type='submit' value="الدخول" className='form__button'/>
+          </form>
+        </div>)
+    }
 }
 
 export default LogIn

@@ -1,9 +1,13 @@
+@import "../../variables.scss";
+
 .navbar{
-  
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 75px;
+  @include responsive-max($med) {
+    justify-content: space-between;
+  }
   &__ul{
     display: flex;
     justify-content: flex-start;
@@ -11,13 +15,40 @@
     width: 85%;
     padding: 0;
     margin: 0;
+    .navbar__link{
+      padding: 20px;
+      @include responsive-max($med) {
+        display: none;
+      }
+    }
   }
   &__link{
     text-decoration: none;
-    padding: 20px;
   }
   &__button{
     margin-right: auto;
     order: 5;
+  }
+  &__mobile-icon{
+    display: none;
+    @include responsive-max($med) {
+      display: block;
+    }
+  }
+  &__mobile-ul{
+    list-style: none;
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 75px;
+    transition: all 0.5s ease-out;
+    width: 100%;
+    background-color: white;
+    .navbar__link{
+      text-align: center;
+      width: 100%;
+      padding: 32px;
+      transition: all 0.5s ease;
+    }
   }
 }

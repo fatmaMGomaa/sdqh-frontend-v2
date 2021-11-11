@@ -1,0 +1,29 @@
+@import "../../variables.scss";
+
+.case-container{
+  
+  &__details{
+   
+    &__info{
+      display: flex;
+      img{
+        display: block;
+        width: 200px;
+        height: 200px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+      }
+      .left ul {
+        list-style: none;
+        padding: 0;
+        #user-of-case{
+          color: $dark-orange;
+        }
+      }
+    }
+  }
+  &__comments{
+    width: 100%;
+  }
+}

@@ -38,7 +38,7 @@ const Animal = () => {
           <Map cases={cases} coords={coords}/>
         </Col>
         <Col>
-        <Cases cases={cases}/>
+        <Cases cases={cases} caseType='animal'/>
         </Col>
       </Row>
     </Container>

@@ -28,7 +28,6 @@ const LogIn = () => {
           localStorage.clear();
           saveToLocalStorage("token", response.data.token);
           saveToLocalStorage("user", response.data.user)
-          saveToLocalStorage("userId", response.data.user.id);
           setLoggedUser( response.data.user);
           setUserToken(response.data.token);
           setIsLogged(true);

@@ -23,7 +23,6 @@ const AddCase = () => {
           console.log(response);
           localStorage.clear();
           saveToLocalStorage("token", response.data.token);
-          saveToLocalStorage("userId", response.data.user.id);
           saveToLocalStorage("user", response.data.user);
           // window.location.replace(process.env.REACT_APP_FRONTEND_URL);
         })

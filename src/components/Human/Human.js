@@ -37,7 +37,7 @@ const Human = () => {
           <Map cases={cases} coords={coords}/>
         </Col>
         <Col>
-        <Cases cases={cases}/>
+        <Cases cases={cases} caseType='human'/>
         </Col>
       </Row>
     </Container>

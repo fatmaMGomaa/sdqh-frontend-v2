@@ -2,3 +2,10 @@
 @import "custom";
 @import "variables.scss";
 
+main{
+  width: 60%;
+}
+
+header, footer {
+  width: 100%;
+}

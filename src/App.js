@@ -14,6 +14,7 @@ import UserProfile from './components/UserProfile/UserProfile';
 import AddCase from './components/Forms/AddCase/AddCase';
 import Header from './components/Header/Header';
 import {UserProvider} from './Contexts/UserProvider'
+import CaseDetails from './components/CaseDetails/CaseDetails';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <main>
             <Switch>
               <Route path='/' exact component={Home} />
+              <Route path='/case/:id' exact component={CaseDetails} />
               <Route path='/human' exact component={Human} />
               <Route path='/animal' exact component={Animal} />
               <Route path='/charity' exact component={Charity} />
@@ -35,9 +37,9 @@ const App = () => {
               <Redirect to='/' />
             </Switch>
           </main>
+          <Footer />
         </UserProvider>
       </Router>
-      <Footer />
     </>
   );
 }

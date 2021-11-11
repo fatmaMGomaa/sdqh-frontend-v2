@@ -6,7 +6,7 @@ import Marker from '../Marker/Marker';
 import './Map.scss';
 import mapStyles from './mapStyles';
 
-const Map = ({ coords={ lat: 30.033333, lng: 31.233334 }, cases, setCoords, setBounds }) => {
+const Map = ({ coords={ lat: 30.033333, lng: 31.233334 }, cases=[], setCoords, setBounds }) => {
 
   return (
     <div className='map-container'>

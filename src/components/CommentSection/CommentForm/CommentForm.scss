@@ -1,0 +1,22 @@
+@import "../../../variables.scss";
+
+.write-comment{
+  display: flex;
+  align-items: center;
+  margin:20px 0;
+  &__form{
+    flex-grow: 1;
+    &__field{
+      width: 100%;
+    }
+    &__input{
+      border: 1px solid $border-color;
+      border-radius: 20px;
+      outline: none;
+      padding: 10px;
+      background: none;
+      width: 100%;
+      margin: 0 10px;
+    }
+  }
+}

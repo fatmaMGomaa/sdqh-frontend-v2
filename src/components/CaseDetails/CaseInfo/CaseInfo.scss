@@ -1,0 +1,58 @@
+@import "../../../variables.scss";
+
+.case-info{
+  width: 100%;
+  max-width: 98rem;
+  padding: 2rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  @include responsive-max($xmed) {
+    max-width: 70rem;
+    justify-content: center;
+  }
+  @include responsive-max($xs) {
+    flex-direction: column;
+  }
+  &__image{
+    min-width: 17rem;
+    max-width: 17rem;
+    height: 15rem;
+    transform: translateX(3rem);
+    @include responsive-max($xmed) {
+      min-width: 15rem;
+      max-width: 15rem;
+    }
+    @include responsive-max($xs) {
+      min-width: 100%;
+      max-width: 100%;
+      transform: translate(0, -5rem);
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 4px;
+      box-shadow: rgba(0, 0, 0, 0.05) -.3rem .3rem .2rem;
+    }
+  }
+  &__content{
+    ul{
+      list-style: none;
+      padding: 0;
+    }
+    .case-info__btn{
+      display: inline-block;
+      padding: 8px 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #fff;
+      background-color: $dark-orange;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+  }
+
+}

@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { saveToLocalStorage } from "../../../util/localStorage";
+import React, { useState, useContext, useEffect } from 'react'
+import { useHistory, Link } from "react-router-dom";
+import axios from 'axios'
+import {AuthContext} from '../../../Contexts/UserProvider'
+
+import './AddCase.scss'
+
 
 const AddCase = () => {
+  let history = useHistory();
+  const {loggedUser, isLogged, userToken, userLocation} = useContext(AuthContext);
   const url = process.env.REACT_APP_BACKEND_URL;
-  const initial_values = {name: '', city: '', address: '', uniqueSign: '', description: '', mobileNumber: '', image: ''}
+  const initial_values = {caseType: 'human', name: '', country: 'مصر', address: '', uniqueSign: '', description: '', mobileNumber: '', image: '', userId: '', lat: '' , lng: '' }
+
   const [formValues, setFormValues] = useState(initial_values);
   const [formErrors, setFormErrors] = useState({});
+
+  // need to revision
+  useEffect(() => {
+    setFormValues({...formValues, userId: loggedUser.id, lat: userLocation.lat, lng: userLocation.lng});
+  },[loggedUser, userLocation]) 
 
   const handleOnChange = (e) => {
     const {name, value} = e.target;
@@ -16,80 +28,104 @@ const AddCase = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validateValues(formValues));
-    if(Object.keys(formErrors).length === 0){
+    if(Object.keys(formErrors).length === 0 && isLogged){
       axios
-        .post(`${url}/signup`, formValues)
+        .post(`${url}/addCase`, formValues, {
+          headers: {
+            accept: "application/json",
+            "Accept-Language": "en-US,en;q=0.8",
+            Authorization: `bearer ${userToken}`
+          }
+        })
         .then(response => {
           console.log(response);
-          localStorage.clear();
-          saveToLocalStorage("token", response.data.token);
-          saveToLocalStorage("user", response.data.user);
-          // window.location.replace(process.env.REACT_APP_FRONTEND_URL);
+          history.push(`/case/${response.data.case.id}/?caseType=${formValues.caseType}`);
         })
         .catch(error => {
           console.log(error);
         });
+    }else {
+      console.log('you have to log in first and fill all needed information')
     };
   }
 
   const validateValues = (values) => {
     const errors = {}
-    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     
-
-    if(!values.firstName){
-      errors.firstName = 'First Name Is Required'
+    if(!values.name){
+      errors.name = 'يجب إدخال اسم/فصيلة الحالة'
     }
-    if(!values.lastName){
-      errors.lastName = 'Last Name Is Required'
+    if(!values.address){
+      errors.address = 'يجب إدخال عنوان الحالة'
     }
-    if(!values.email){
-      errors.email = 'Email Is Required'
-    }else if(!regex.test(String(values.email).toLowerCase())){
-      errors.email = 'please enter a valid email'
+    if(!values.description){
+      errors.description = 'يجب إدخال وصف الحالة'
     }
-    if(!values.password){
-      errors.password = 'Password Is Required'
-    }else if(values.password.length < 5){
-      errors.password = 'password should be more than 5'
+    if(!values.country){
+      errors.country = 'يجب إدخال بلد الحالة'
     }
-    if(!values.gender){
-      errors.gender = 'Gender Is Required'
-    }
-    if(!values.birthDate){
-      errors.birthDate = 'Birth Date Is Required'
+    if(!values.caseType){
+      errors.caseType = 'يجب إدخال نوع الحالة'
     }
     return errors;
   }
-
-  return (
-    <div>
-      <form  method="POST" name="add_case" id="add_case" onSubmit={handleSubmit}>
-        <label>نوع الحيوان: <input type="text" name="name" id="name" required onChange={handleOnChange}/></label>
-        <label>
-            البلد
-            <select name="city" id="city" required onChange={handleOnChange}>
-                <option value="مصر">مصر</option>
-                <option value="الامارات">الإمارات</option>
-                <option value="السعودية">السعودية</option>
+  if(isLogged){
+    return (
+      <div className='form-container'>
+        <form method="POST" name="post_case" id="post_case" className='form' onSubmit={handleSubmit}>
+          <div className='form__field'>
+            <input type="text" onChange={handleOnChange} name="name" className='form__input' placeholder=" " required value={formValues['name']}/>
+            <label className='form__label' htmlFor=''>الاسم</label>
+          </div>
+          <p className='form__p'>{formErrors.name}</p>
+          <div className='form__field'>
+            <input type="text" onChange={handleOnChange} name="address" className='form__input' placeholder=" " required value={formValues['address']} />
+            <label className='form__label' htmlFor=''>العنوان</label>
+          </div>
+          <p className='form__p'>{formErrors.address}</p>
+          <div className='form__field'>
+            <input type="text" onChange={handleOnChange} name="uniqueSign" className='form__input' placeholder=" " value={formValues['uniqueSign']} />
+            <label className='form__label' htmlFor=''>علامة مميزة</label>
+          </div>
+          <p className='form__p'>{formErrors.uniqueSign}</p>
+          <div className='form__textarea-field'>
+            <textarea onChange={handleOnChange} name="description" id="description" className='form__input form__textarea' placeholder=" " required value={formValues['description']}></textarea>
+            <label className='form__label' htmlFor=''>وصف الحالة</label>
+          </div>
+          <p className='form__p'>{formErrors.description}</p>
+          <div className='form__field'>
+            <select onChange={handleOnChange} name="country" className='form__input form__select' placeholder=" " required value={formValues['country']}>
+              <option value="مصر">مصر</option>
+              <option value="الامارات">الإمارات</option>
+              <option value="السعودية">السعودية</option>
             </select>
-        </label>
-        <label>
-            العنوان كامل
-            <textarea rows="5" name="address" id="address" required onChange={handleOnChange}></textarea>
-        </label>
-        <label>علامة مميزة<input type="text" name="unique-sign" id="unique-sign" required onChange={handleOnChange}/></label>
-        <label>
-            وصف الحالة
-            <textarea rows="10" name="description" id="description" required onChange={handleOnChange}></textarea>
-        </label>
-        <label>رقم تليفون*<input type="tel" name="mobile-number" id="mobile-number" onChange={handleOnChange}/></label>
-        <label>لينك الصورة*<input type="url" name="image" id="image" onChange={handleOnChange}/></label>
-        {/* <label class="image">صورة الحالة*<input type="file" name="image" id="image" class="image"/></label> */}
-        <button type="submit" onClick={handleSubmit}>حفظ</button>
-    </form>
-    </div>
-  )
+            <label className='form__label' htmlFor=''> البلد</label>
+          </div>
+          <p className='form__p'>{formErrors.country}</p>
+          <div className='form__field'>
+            <select onChange={handleOnChange} name="caseType" className='form__input form__select' placeholder=" " required value={formValues['caseType']}>
+              <option value="human">رعاية الإنسان</option>
+              <option value="animal">رعاية الحيوان</option>
+            </select>
+            <label className='form__label' htmlFor=''> نوع الحالة</label>
+          </div>
+          <p className='form__p'>{formErrors.caseType}</p>
+          <div className='form__field'>
+            <input type="tel" onChange={handleOnChange} name="mobileNumber" className='form__input' placeholder=" " value={formValues['mobileNumber']} />
+            <label className='form__label' htmlFor=''>رقم التليفون</label>
+          </div>
+          <div className='form__field'>
+            <input type="url" onChange={handleOnChange} name="image" className='form__input' placeholder=" " value={formValues['image']} />
+            <label className='form__label' htmlFor=''>لينك الصورة</label>
+          </div>
+          <input onClick={handleSubmit} type='submit' value='حفظ الحالة' className='form__button'/>
+        </form>
+      </div>
+    )
+  }else{
+    return <h3 className='login__error'>يجب تسجيل الدخول أولا <Link to='/login'>أضغط هنا</Link></h3>
+  }
+  
 }
 
 export default AddCase

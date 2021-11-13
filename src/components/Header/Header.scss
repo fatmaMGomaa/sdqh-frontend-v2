@@ -20,6 +20,7 @@
       flex-grow: unset;
     }
     .navbar__link{
+      color: $dark-blue;
       padding: 15px;
       @include responsive-max($med) {
         display: none;

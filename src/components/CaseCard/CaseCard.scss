@@ -1,5 +1,8 @@
 @import "../../variables.scss";
 
+a.card-link, a.card-link:hover{
+  color: $dark-blue;
+}
 .card-container{
   font-size: $normal-font-size;
   padding: 10px 10px 10px 0;
@@ -7,7 +10,7 @@
   border-radius: 10px;
   display: flex;
   width: 500px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   @include responsive-max($xs) {

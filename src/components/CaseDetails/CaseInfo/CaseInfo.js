@@ -11,7 +11,7 @@ const CaseInfo = ({caseInfo, caseUser}) => {
         <img src={caseInfo.image} alt={caseInfo.name}/>
       </div>
       <div className='case-info__content'>
-        <h3>{caseInfo.name}</h3>
+        <h3>{caseInfo.name || caseInfo.species}</h3>
         <ul>
           <li><FontAwesomeIcon icon={faClock} color='#d57a5b' /> <time>{caseInfo && caseInfo.createdAt && caseInfo.createdAt.split('T')[0]}</time></li>
           <li><FontAwesomeIcon icon={faMapMarkerAlt} color='#d57a5b' /> { caseInfo.area}, {caseInfo.address}, { caseInfo.uniqueSign}</li>

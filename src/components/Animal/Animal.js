@@ -20,7 +20,7 @@ const Animal = () => {
 
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}allCases?caseType=animal`);
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/allCases?caseType=animal`);
         setCases(res.data.cases)
       } catch (error) {
         console.log(error);

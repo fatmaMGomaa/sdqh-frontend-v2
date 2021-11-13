@@ -1,15 +1,14 @@
 @import "../../variables.scss";
 
-.login__p {
+.login__error {
   text-align: center;
-  font-size: 30px;
-  font-weight: 400;
 }
 .form-container{
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 0;
+  margin: 30px 0 50px;
   color: $input-color;
   .form{
     width: 400px;
@@ -20,11 +19,16 @@
     @include responsive-max($xs) {
       width: 300px;
     }
-  
-    &__field{
+    &__p{
+      color: $dark-orange;
+    }
+    &__field, &__textarea-field{
       position: relative;
       height: 48px;
       margin-bottom: 1.5rem;
+    }
+    &__textarea-field{
+      height: 150px;
     }
     &__input{
       position: absolute;

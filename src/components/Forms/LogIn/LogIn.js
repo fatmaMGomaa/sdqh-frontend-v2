@@ -58,7 +58,7 @@ const LogIn = () => {
 
   if(isLogged){
       return(
-        <p className='login__p'>لقد قمت بالدخول مسبقا</p>
+        <h3 className='login__error'>لقد قمت بالدخول مسبقا</h3>
       )
     } else {
       return(

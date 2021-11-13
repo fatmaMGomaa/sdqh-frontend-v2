@@ -9,6 +9,7 @@ export const UserProvider = (props) => {
   const [userToken, setUserToken] = useState('');
   const [isLogged, setIsLogged] = useState(false);
   const [userLocation, setUserLocation] = useState({});
+  const [editCase, setEditCase] = useState({});
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -28,5 +29,5 @@ export const UserProvider = (props) => {
     setIsLogged(false)
   }
 
-  return <AuthContext.Provider value={{log_out, loggedUser, setLoggedUser, userToken, setUserToken, isLogged, setIsLogged, userLocation, setUserLocation}} {...props} />
+  return <AuthContext.Provider value={{log_out, loggedUser, setLoggedUser, userToken, setUserToken, isLogged, setIsLogged, userLocation, setUserLocation, editCase, setEditCase}} {...props} />
 }

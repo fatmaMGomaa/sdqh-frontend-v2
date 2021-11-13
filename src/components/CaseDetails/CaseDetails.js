@@ -19,7 +19,7 @@ const CaseDetails = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/singleCase/${id}?caseType=${caseType}`);
-        setCaseInfo(res.data.case)
+        setCaseInfo({...res.data.case, caseType})
         setCaseUser(res.data.case.user)
         setComments(res.data.case.comments)
       } catch (error) {

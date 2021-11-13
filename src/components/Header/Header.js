@@ -29,8 +29,8 @@ const Header = () => {
         <Link to='/animal' className='navbar__link'>
           <li>رعاية الحيوان</li>
         </Link>
-        <Link to='/' className='navbar__link'>
-          <li>المنظمات الخيرية</li>
+        <Link to='/addcase' className='navbar__link'>
+          <li>مساعدة جديدة</li>
         </Link>
       </ul>
     </header>

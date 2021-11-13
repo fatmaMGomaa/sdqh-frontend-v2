@@ -12,6 +12,7 @@ import login from './components/Forms/LogIn/LogIn';
 import EditUser from './components/Forms/EditUser/EditUser';
 import UserProfile from './components/UserProfile/UserProfile';
 import AddCase from './components/Forms/AddCase/AddCase';
+import EditCase from './components/Forms/EditCase/EditCase';
 import Header from './components/Header/Header';
 import {UserProvider} from './Contexts/UserProvider'
 import CaseDetails from './components/CaseDetails/CaseDetails';
@@ -26,6 +27,8 @@ const App = () => {
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/case/:id' exact component={CaseDetails} />
+              <Route path='/case/:id/edit' exact component={EditCase} />
+              <Route path='/addcase' exact component={AddCase} />
               <Route path='/human' exact component={Human} />
               <Route path='/animal' exact component={Animal} />
               <Route path='/charity' exact component={Charity} />
@@ -33,7 +36,6 @@ const App = () => {
               <Route path='/login' exact component={login} />
               <Route path='/user/:id' exact component={UserProfile} />
               <Route path='/user/:id/edit' exact component={EditUser} />
-              <Route path='/addcase' exact component={AddCase} />
               <Redirect to='/' />
             </Switch>
           </main>

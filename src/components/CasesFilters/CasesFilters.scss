@@ -1,0 +1,16 @@
+@import "../../variables.scss";
+
+.cases-filters{
+  .cases-wrapper{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    
+    @include responsive-max($med) {
+      grid-template-columns: auto auto auto;
+    }
+    @include responsive-max($xmed) {
+      grid-template-columns: auto;
+    }
+  }
+  
+}

@@ -13,7 +13,7 @@ const SquareCard = ({ item: {id, name, species, image, createdAt}, caseType }) =
       <img className='square-card__container__img' src={image} alt={`حالة ${name}`}/>
       <div className='square-card__container__content'>
         <h3 className='square-card__container__title'>
-          {name || species}
+          {(name || species).substring(0, 15)}...
           <span className='square-card__container__date'><time>{createdAt && createdAt.split('T')[0]}</time></span>
         </h3>
         <button className='square-card__container__button'>

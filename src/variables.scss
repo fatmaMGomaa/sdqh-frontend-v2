@@ -15,7 +15,7 @@ $normal-font-size: 1rem;
 $small-font-size: .75rem;
 
 $med: 1032px;   // ipad-pro
-$xmed: 770px;   // ipad
+$xmed: 767px;   // ipad
 $xs: 500px;     // mobile
 
 @mixin responsive-min($size) {

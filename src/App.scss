@@ -2,13 +2,36 @@
 @import "custom";
 @import "variables.scss";
 
-main{
-  width: 60%;
+header, footer, main {
+  width: 100%;
+}
+
+.main-container{
+  width: 65%;
+  margin: 0 auto;
   @include responsive-max($med) {
     width: 90%;
   }
 }
 
-header, footer {
-  width: 100%;
+.btn-outline-primary, .btn-primary{
+  font-weight: 600;
+  border-color: $dark-orange;
+}
+.btn-outline-primary{
+  color: $dark-orange;
+  &:hover{
+    background-color: $dark-orange;
+    color: white;
+    border-color: $dark-orange;
+  }
+}
+
+.btn-primary{
+  background-color: $dark-orange;
+  &:hover{
+    background-color: $dark-orange;
+    opacity: 0.9;
+    border-color: $dark-orange;
+  }
 }

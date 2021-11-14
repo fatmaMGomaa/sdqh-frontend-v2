@@ -11,14 +11,5 @@
         color: $blue;
       }
     }
-    .btn-outline-primary{
-      font-weight: 600;
-      color: $dark-orange;
-      border-color: $dark-orange;
-      &:hover{
-        background-color: $dark-orange;
-        color: white;
-      }
-    }
   }
 }

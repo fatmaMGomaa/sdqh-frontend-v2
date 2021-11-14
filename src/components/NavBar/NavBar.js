@@ -13,7 +13,7 @@ const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" sticky="top" className="navbar__container justify-content-between">
       <Navbar.Brand href="/"><img src={logo} width="150" alt="sdqh logo"/></Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav"  className="justify-content-end"/>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" className="justify-content-end"/>
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav>
           <Nav.Link href="/">الرئيسية</Nav.Link>

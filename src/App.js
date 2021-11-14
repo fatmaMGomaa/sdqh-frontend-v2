@@ -27,16 +27,18 @@ const App = () => {
           <main>
             <Switch>
               <Route path='/' exact component={Home} />
-              <Route path='/case/:id' exact component={CaseDetails} />
-              <Route path='/case/:id/edit' exact component={EditCase} />
-              <Route path='/addcase' exact component={AddCase} />
-              <Route path='/human' exact component={Human} />
-              <Route path='/animal' exact component={Animal} />
-              <Route path='/charity' exact component={Charity} />
-              <Route path='/signup' exact component={SignUp} />
-              <Route path='/login' exact component={login} />
-              <Route path='/user/:id' exact component={UserProfile} />
-              <Route path='/user/:id/edit' exact component={EditUser} />
+              <div className='main-container'>
+                <Route path='/case/:id' exact component={CaseDetails} />
+                <Route path='/case/:id/edit' exact component={EditCase} />
+                <Route path='/addcase' exact component={AddCase} />
+                <Route path='/human' exact component={Human} />
+                <Route path='/animal' exact component={Animal} />
+                <Route path='/charity' exact component={Charity} />
+                <Route path='/signup' exact component={SignUp} />
+                <Route path='/login' exact component={login} />
+                <Route path='/user/:id' exact component={UserProfile} />
+                <Route path='/user/:id/edit' exact component={EditUser} />
+              </div>
               <Redirect to='/' />
             </Switch>
           </main>

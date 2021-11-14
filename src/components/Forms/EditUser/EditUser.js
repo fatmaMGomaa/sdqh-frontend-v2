@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useHistory, Link } from "react-router-dom";
 import axios from 'axios';
 import { saveToLocalStorage, getLocalStorageItem } from "../../../util/localStorage";
 
 import '../Form.scss';
 
 const EditUser = () => {
+  let history = useHistory();
   const url = process.env.REACT_APP_BACKEND_URL;
   const token = getLocalStorageItem("token");
   const user = getLocalStorageItem("user");
@@ -31,10 +33,10 @@ const EditUser = () => {
           }
         })
         .then(response => {
-          console.log(response);
           localStorage.clear();
           saveToLocalStorage("token", response.data.token);
           saveToLocalStorage("user", response.data.user);
+          history.push(`/user/${user.id}`);
         })
         .catch(error => {
           console.log(error);

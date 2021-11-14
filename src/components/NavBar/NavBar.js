@@ -19,12 +19,12 @@ const NavBar = () => {
           <Nav.Link href="/">الرئيسية</Nav.Link>
 
           <NavDropdown title='رعاية الإنسان' id="collasible-nav-dropdown">
-            <NavDropdown.Item href='/human'>الخريظة</NavDropdown.Item>
+            <NavDropdown.Item href='/case/?caseType=human'>الخريظة</NavDropdown.Item>
             <NavDropdown.Item href='/'>الحالات</NavDropdown.Item>
           </NavDropdown>
      
           <NavDropdown title='رعاية الحيوان' id="collasible-nav-dropdown">
-            <NavDropdown.Item href={`/animal`}>الخريطة</NavDropdown.Item>
+            <NavDropdown.Item href='/case/?caseType=animal'>الخريطة</NavDropdown.Item>
             <NavDropdown.Item href='/'>الحالات</NavDropdown.Item>
           </NavDropdown>
         </Nav>
@@ -44,8 +44,6 @@ const NavBar = () => {
               <Button variant="outline-primary" href='/signup'>حساب جديد</Button>
             </Nav>
           }
-        
-        
         
       </Navbar.Collapse>
     </Navbar>

@@ -15,7 +15,7 @@ const Home = () => {
         <div className='home__header__content'>
           <p className='home__header__content__slogan'>تواصل في الخير</p>
           <h2>موقعك بيغير حياة الأخرين</h2>
-          <p className='home__header__content__p'>صدقة.نت الموقع الخيري الأول في الوطن العربي لرصد كافة الحالات الإنسانية في مختلف أنحاء الوطن العربي</p>
+          <p className='home__header__content__p'>صدقة.نت الموقع الخيري الأول في الوطن العربي لرصد كافة الحالات الإنسانية والحيوانية في مختلف أنحاء الوطن العربي</p>
           <Button variant="primary" href='/signup'>حساب جديد</Button>
         </div>
         <div className='home__header__images'>

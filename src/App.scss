@@ -17,6 +17,7 @@ header, footer, main {
 .btn-outline-primary, .btn-primary{
   font-weight: 600;
   border-color: $dark-orange;
+  transition: all ease 0.5s;
 }
 .btn-outline-primary{
   color: $dark-orange;

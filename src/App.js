@@ -15,6 +15,7 @@ import AddCase from './components/Forms/AddCase/AddCase';
 import EditCase from './components/Forms/EditCase/EditCase';
 import {UserProvider} from './Contexts/UserProvider'
 import CaseDetails from './components/CaseDetails/CaseDetails';
+import MapCases from './components/MapCases/MapCases';
 
 const App = () => {
   return (
@@ -28,11 +29,10 @@ const App = () => {
             <Switch>
               <Route path='/' exact component={Home} />
               <div className='main-container'>
+                <Route path='/case' exact component={MapCases} />
                 <Route path='/case/:id' exact component={CaseDetails} />
                 <Route path='/case/:id/edit' exact component={EditCase} />
                 <Route path='/addcase' exact component={AddCase} />
-                <Route path='/human' exact component={Human} />
-                <Route path='/animal' exact component={Animal} />
                 <Route path='/charity' exact component={Charity} />
                 <Route path='/signup' exact component={SignUp} />
                 <Route path='/login' exact component={login} />

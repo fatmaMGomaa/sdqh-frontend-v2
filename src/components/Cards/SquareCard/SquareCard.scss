@@ -1,0 +1,52 @@
+@import "../../../variables.scss";
+
+.square-card{
+  width: 200px;
+  margin: 30px auto;
+  a.square-card__container, a.square-card__container{
+    color: $dark-blue;
+    display: block;
+  }
+  &__container{
+    font-size: $normal-font-size;
+    margin: 10px auto;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    &__img{
+      display: block;
+      width: 100%;
+      height: 50%;
+      border-radius: 20px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+    &__content{
+      display: flex;
+      flex-basis: 100%;
+      justify-content: space-between;
+    }
+    &__title{
+      padding: 0 10px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    &__date{
+      display: block;
+      font-size: $small-font-size;
+      color: $blue;
+    }
+    
+    &__button{
+      font-size: $normal-font-size;
+      border: none;
+      border-radius: 0 7px 0 7px;
+      background-color: $dark-blue;
+      width:45px ;
+      height: 40px;
+      align-self: flex-end;
+    }
+  }
+
+}

@@ -20,12 +20,12 @@ const NavBar = () => {
 
           <NavDropdown title='رعاية الإنسان' id="collasible-nav-dropdown">
             <NavDropdown.Item href='/case/?caseType=human'>الخريظة</NavDropdown.Item>
-            <NavDropdown.Item href='/'>الحالات</NavDropdown.Item>
+            <NavDropdown.Item href='/filters/?caseType=human'>الحالات</NavDropdown.Item>
           </NavDropdown>
      
           <NavDropdown title='رعاية الحيوان' id="collasible-nav-dropdown">
             <NavDropdown.Item href='/case/?caseType=animal'>الخريطة</NavDropdown.Item>
-            <NavDropdown.Item href='/'>الحالات</NavDropdown.Item>
+            <NavDropdown.Item href='/filters/?caseType=animal'>الحالات</NavDropdown.Item>
           </NavDropdown>
         </Nav>
         

@@ -1,0 +1,52 @@
+@import "../../../variables.scss";
+
+.rectangle-card{
+  a.card-container, a.card-container:hover{
+    color: $dark-blue;
+  }
+  .card-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $normal-font-size;
+    padding: 10px 10px 10px 0;
+    margin: 10px auto;
+    border-radius: 10px;
+    width: 350px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    @include responsive-max($xs) {
+      width: 300px;
+      font-size: $small-font-size;
+    }
+  
+    .card-container__img{
+      display: block;
+      width: 90px;
+      height: 90px;
+      margin-left: 10px;
+      border-radius: 10px;
+    }
+  
+    .card-container__content{
+      margin-top: 10px;
+      h3{
+        font-size: 20px;
+        @include responsive-max($xs) {
+          font-size: $normal-font-size;
+        }
+      }
+    }
+  
+    .card-container__button{
+      border: none;
+      border-radius: 0 7px 7px 0;
+      background-color: $dark-blue;
+      padding: 7px 14px;
+      margin-right: 5px;
+      @include responsive-max($xs) {
+        font-size: $normal-font-size;
+      }
+    }
+  }
+
+}

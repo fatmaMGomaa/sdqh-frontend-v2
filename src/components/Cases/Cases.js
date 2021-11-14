@@ -1,5 +1,5 @@
 import React from 'react';
-import CaseCard from '../CaseCard/CaseCard';
+import RectangleCard from '../Cards/RectangleCard/RectangleCard';
 
 import './Cases.scss';
 
@@ -9,7 +9,7 @@ const Cases = ({cases=[], caseType}) => {
     <div className='cases-container'>
       {cases.map(single_case => {
         return(
-          <CaseCard key={single_case.id} item={single_case} caseType={caseType}/>   
+          <RectangleCard key={single_case.id} item={single_case} caseType={caseType}/>   
         )
       })}
     </div>

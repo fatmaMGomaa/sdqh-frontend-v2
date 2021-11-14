@@ -13,7 +13,6 @@ import EditUser from './components/Forms/EditUser/EditUser';
 import UserProfile from './components/UserProfile/UserProfile';
 import AddCase from './components/Forms/AddCase/AddCase';
 import EditCase from './components/Forms/EditCase/EditCase';
-import Header from './components/Header/Header';
 import {UserProvider} from './Contexts/UserProvider'
 import CaseDetails from './components/CaseDetails/CaseDetails';
 
@@ -22,7 +21,9 @@ const App = () => {
     <>
       <Router>
         <UserProvider>
-          <Header />
+          <header>
+            <NavBar />
+          </header>
           <main>
             <Switch>
               <Route path='/' exact component={Home} />

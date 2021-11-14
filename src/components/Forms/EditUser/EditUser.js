@@ -35,7 +35,6 @@ const EditUser = () => {
           localStorage.clear();
           saveToLocalStorage("token", response.data.token);
           saveToLocalStorage("user", response.data.user);
-          // window.location.replace(process.env.REACT_APP_FRONTEND_URL);
         })
         .catch(error => {
           console.log(error);

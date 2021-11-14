@@ -1,11 +1,24 @@
 @import "../../variables.scss";
 .navbar__container{
-  a.navbar-brand{
-    margin-right: 0;
-  }
   .navbar-nav{
-    a.nav-link{
+    a.nav-link, a.dropdown-item, button.btn-link{
       color: $dark-blue;
+      text-align: right;
+    }
+    .nav-item, a.nav-link{
+      margin: 0 5px;
+      &:hover{
+        color: $blue;
+      }
+    }
+    .btn-outline-primary{
+      font-weight: 600;
+      color: $dark-orange;
+      border-color: $dark-orange;
+      &:hover{
+        background-color: $dark-orange;
+        color: white;
+      }
     }
   }
 }

@@ -75,7 +75,7 @@ const EditCase = () => {
   if(isLogged){
     return (
       <div className='form-container'>
-        <form method="POST" name="post_case" id="post_case" className='form' onSubmit={handleSubmit}>
+        <form method="PUT" name="edit_case" id="edit_case" className='form' onSubmit={handleSubmit}>
           <div className='form__field'>
             <input type="text" onChange={handleOnChange} name="name" className='form__input' placeholder=" " required value={formValues['name']}/>
             <label className='form__label' htmlFor=''>الاسم</label>

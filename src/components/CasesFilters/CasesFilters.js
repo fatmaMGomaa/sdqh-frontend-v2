@@ -23,7 +23,7 @@ const CasesFilters = () => {
       }
     };
     fetchData();
-  },[]) 
+  }) 
 
   return (
     <div className='cases-filters main-container'>

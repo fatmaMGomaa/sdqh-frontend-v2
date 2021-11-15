@@ -9,27 +9,27 @@ const Filters = ({caseFilters, setCaseFilters, caseType}) => {
 
   const handleOnChange = (e) => {
     const {name, value} = e.target;
-    name === 'country' ? setCaseFilters({...caseFilters, [name]: value, filter_city: cities[value][0]}) : setCaseFilters({...setCaseFilters, [name]: value});
+    name === 'filter_country' ? setCaseFilters({...caseFilters, [name]: value, filter_city: ''}) : setCaseFilters({...caseFilters, [name]: value});
   }
 
   return (
     <div className='form-container'>
         <form method="POST" name="filters" id="filters" className='form filters_form'>
           <div className='form__field'>
-            <select onChange={handleOnChange} name="filter_country" className='form__input form__select' placeholder=" " required value={caseFilters['filter_country']}>
+            <select onChange={handleOnChange} name="filter_country" className='form__input form__select' placeholder=" " required value={caseFilters.filter_country}>
               {countries.map(item => <option value={item}>{item}</option>) }  
             </select>
             <label className='form__label' htmlFor=''> البلد</label>
           </div>
           <div className='form__field'>
-            <select onChange={handleOnChange} name="filter_city" className='form__input form__select' placeholder=" " required value={caseFilters['filter_city']}>
+            <select onChange={handleOnChange} name="filter_city" className='form__input form__select' placeholder=" " required value={caseFilters.filter_city}>
               <option value=''>جميع الحالات</option>
               {country_cities.map(item => <option value={item}>{item}</option>) }  
             </select>
             <label className='form__label' htmlFor=''> المدينة</label>
           </div>
           <div className='form__field'>
-            <select onChange={handleOnChange} name="filter_tag" className='form__input form__select' placeholder=" " required value={caseFilters['filter_tag']}>
+            <select onChange={handleOnChange} name="filter_tag" className='form__input form__select' placeholder=" " required value={caseFilters.filter_tag}>
               <option value=''>جميع الحالات</option>
               {tags.map(item => <option value={item}>{item}</option>) }
             </select>

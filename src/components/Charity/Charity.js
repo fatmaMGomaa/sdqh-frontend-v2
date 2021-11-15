@@ -2,7 +2,7 @@ import React from 'react'
 
 const Charity = () => {
   return (
-    <div>
+    <div className='main-container'>
       الجمعيات الخيرية
     </div>
   )

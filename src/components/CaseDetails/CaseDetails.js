@@ -30,7 +30,7 @@ const CaseDetails = () => {
   },[]) 
 
   return (
-    <div className='case-container'>
+    <div className='case-container main-container'>
 
       <div className='case-container__content'><CaseInfo caseInfo={caseInfo} caseUser={caseUser}/></div>
       <div className='case-container__map'><Map /></div>

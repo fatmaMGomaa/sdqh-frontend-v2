@@ -8,9 +8,10 @@ header, footer, main {
 
 .main-container{
   width: 65%;
-  margin: 0 auto;
+  margin: 50px auto;
   @include responsive-max($med) {
     width: 90%;
+    margin: 30px auto;
   }
 }
 

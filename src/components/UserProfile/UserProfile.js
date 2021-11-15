@@ -40,7 +40,7 @@ const UserProfile = () => {
   },[loggedUser, isLogged, userToken]) 
 
   return (
-    <div>
+    <div className='main-container'>
       <div id="user-info">
         <img src={user.image} alt={`${user.firstName}`}/>
         <h3>

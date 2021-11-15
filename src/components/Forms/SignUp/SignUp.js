@@ -73,7 +73,7 @@ const SignUp = ({edit=false}) => {
 
 
   return (
-    <div className='form-container'>
+    <div className='form-container main-container'>
       <form method="POST" name="signup" id="signup" className='form' onSubmit={handleSubmit}>
         <div className='form__field'>
             <input type="text" onChange={handleOnChange} name="firstName" className='form__input' placeholder=" " required />

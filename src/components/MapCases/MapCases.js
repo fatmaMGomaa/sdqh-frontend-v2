@@ -29,7 +29,7 @@ const MapCases = () => {
     fetchData();
   },[]) 
   return (
-    <div className='div-wrapper'>
+    <div className='div-wrapper main-container'>
     <h2>ساعد من حولك</h2>
       <div className='map-cases'>
         <div className='map'>

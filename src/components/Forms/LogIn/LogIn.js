@@ -62,7 +62,7 @@ const LogIn = () => {
       )
     } else {
       return(
-        <div className='form-container'>
+        <div className='form-container main-container'>
           <form method="POST" name="login" id="login" className='form' onSubmit={handleLogin}>
             <div className='form__field'>
               <input type="email" onChange={handleOnChange} name="email" className='form__input' placeholder=" " required />

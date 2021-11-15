@@ -2,10 +2,12 @@ import React, {useState, useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import SquareCard from '../Cards/SquareCard/SquareCard';
+import Filters from '../Filters/Filters'
 import './CasesFilters.scss'
 
 const CasesFilters = () => {
   const [cases, setCases] = useState([])
+  const [caseFilters, setCaseFilters] = useState({filter_country: 'مصر', filter_city: '', filter_tag: ''})
 
   const search = useLocation().search;
   const caseType = new URLSearchParams(search).get('caseType');
@@ -24,7 +26,8 @@ const CasesFilters = () => {
   },[]) 
 
   return (
-    <div className='cases-filters'>
+    <div className='cases-filters main-container'>
+      <Filters caseType={caseType} caseFilters={caseFilters} setCaseFilters={setCaseFilters}/>
       <div className='cases-wrapper'>
         {cases.map(single_case => {
           return(

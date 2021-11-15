@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useHistory, Link } from "react-router-dom";
 import axios from 'axios'
 import {AuthContext} from '../../../Contexts/UserProvider'
+import {human_tags, animal_tags, countries, cities} from "../../../util/generic_variables"
 
 import './AddCase.scss'
 
@@ -10,10 +11,13 @@ const AddCase = () => {
   let history = useHistory();
   const {loggedUser, isLogged, userToken, userLocation} = useContext(AuthContext);
   const url = process.env.REACT_APP_BACKEND_URL;
-  const initial_values = {caseType: 'human', name: '', country: 'مصر', address: '', uniqueSign: '', description: '', mobileNumber: '', image: '', userId: '', lat: '' , lng: '' }
+  const initial_values = {caseType: 'human', name: '', country: 'مصر', city: 'القاهرة', address: '', uniqueSign: '', description: '', tag: 'أخرى', mobileNumber: '', image: '', userId: '', lat: '' , lng: '' }
 
   const [formValues, setFormValues] = useState(initial_values);
   const [formErrors, setFormErrors] = useState({});
+
+  let tags = formValues.caseType === 'animal' ? animal_tags : human_tags
+  let country_cities = cities[formValues.country]
 
   // need to revision
   useEffect(() => {
@@ -22,7 +26,7 @@ const AddCase = () => {
 
   const handleOnChange = (e) => {
     const {name, value} = e.target;
-    setFormValues({...formValues, [name]: value});
+    name === 'country' ? setFormValues({...formValues, [name]: value, city: cities[value][0]}) : setFormValues({...formValues, [name]: value});
   }
 
   const handleSubmit = (e) => {
@@ -95,13 +99,18 @@ const AddCase = () => {
           <p className='form__p'>{formErrors.description}</p>
           <div className='form__field'>
             <select onChange={handleOnChange} name="country" className='form__input form__select' placeholder=" " required value={formValues['country']}>
-              <option value="مصر">مصر</option>
-              <option value="الامارات">الإمارات</option>
-              <option value="السعودية">السعودية</option>
+              {countries.map(item => <option value={item}>{item}</option>) }  
             </select>
             <label className='form__label' htmlFor=''> البلد</label>
           </div>
           <p className='form__p'>{formErrors.country}</p>
+          <div className='form__field'>
+            <select onChange={handleOnChange} name="city" className='form__input form__select' placeholder=" " required value={formValues['city']}>
+              {country_cities.map(item => <option value={item}>{item}</option>) }  
+            </select>
+            <label className='form__label' htmlFor=''> المدينة</label>
+          </div>
+          <p className='form__p'>{formErrors.city}</p>
           <div className='form__field'>
             <select onChange={handleOnChange} name="caseType" className='form__input form__select' placeholder=" " required value={formValues['caseType']}>
               <option value="human">رعاية الإنسان</option>
@@ -110,6 +119,13 @@ const AddCase = () => {
             <label className='form__label' htmlFor=''> نوع الحالة</label>
           </div>
           <p className='form__p'>{formErrors.caseType}</p>
+          <div className='form__field'>
+            <select onChange={handleOnChange} name="tag" className='form__input form__select' placeholder=" " required value={formValues['tag']}>
+              {tags.map(item => <option value={item}>{item}</option>) }
+            </select>
+            <label className='form__label' htmlFor=''>تاج</label>
+          </div>
+          <p className='form__p'>{formErrors.tag}</p>
           <div className='form__field'>
             <input type="tel" onChange={handleOnChange} name="mobileNumber" className='form__input' placeholder=" " value={formValues['mobileNumber']} />
             <label className='form__label' htmlFor=''>رقم التليفون</label>

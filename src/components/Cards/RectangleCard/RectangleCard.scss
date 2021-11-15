@@ -15,7 +15,7 @@
     width: 350px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     @include responsive-max($xs) {
-      width: 300px;
+      width: 250px;
       font-size: $small-font-size;
     }
   

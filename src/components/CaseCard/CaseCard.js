@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 
 import './CaseCard.scss';
 
-const CaseCard = ({ item: {id, name, species, description, image}, caseType }) => {
+const CaseCard = ({ item: {id, name, description, image}, caseType }) => {
   return (
     <div>
       <Link to={`/case/${id}/?caseType=${caseType}`} className='card-container'>
         <img className='card-container__img' src={image} alt={`حالة ${name}`}/>
         <div className='card-container__content'>
-          <h3 className='card-container__content__title'>{name || species}</h3>
+          <h3 className='card-container__content__title'>{name}</h3>
           <p className='card-container__content__description'>{description.substring(0, 50)}...</p>
         </div>
         <button className='card-container__button'>

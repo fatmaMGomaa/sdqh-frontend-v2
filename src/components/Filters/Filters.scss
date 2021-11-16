@@ -1,15 +1,20 @@
+@import "../../variables.scss";
 @import '../Forms/Form.scss';
 
 .form-container{
   .filters_form{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     .form__field{
       flex-basis: 30%;
       margin: 10px;
+      @include responsive-max($xs) {
+        flex-basis: 100%;
+      }
     }
   }
 }

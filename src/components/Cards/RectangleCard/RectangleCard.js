@@ -12,7 +12,7 @@ const RectangleCard = ({ item: {id, name, description, image}, caseType }) => {
         <img className='card-container__img' src={image} alt={`حالة ${name}`}/>
         <div className='card-container__content'>
           <h3 className='card-container__content__title'>{name}</h3>
-          <p className='card-container__content__description'>{description.substring(0, 50)}...</p>
+          <p className='card-container__content__description'>{description.substring(0, 40)}...</p>
         </div>
         <button className='card-container__button'>
           <Link to='/'><FontAwesomeIcon icon={faChevronLeft} size='1x' color='white'/></Link>

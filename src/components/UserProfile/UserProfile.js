@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import './UserProfile.scss';
-import CaseCard from '../CaseCard/CaseCard';
+import RectangleCard from '../Cards/RectangleCard/RectangleCard';
 
 const UserProfile = () => {
   const {loggedUser, isLogged, userToken} = useContext(AuthContext);
@@ -44,7 +44,7 @@ const UserProfile = () => {
       <div id="user-info">
         <img src={user.image} alt={`${user.firstName}`}/>
         <h3>
-          {isLogged && loggedUser.id === user.id && <Link to={`${loggedUser.id}/edit`}><FontAwesomeIcon icon={faEdit} size='1x'/></Link>} {user.firstName} {user.lastName}
+          {isLogged && loggedUser.id === user.id && <Link to={`${loggedUser.id}/edit`}><FontAwesomeIcon icon={faEdit} color='#d57a5b'/></Link>} {user.firstName} {user.lastName}
         </h3>
       </div>
       <Tabs defaultActiveKey="humanCases" transition={false} id="noanim-tab-example">
@@ -52,7 +52,7 @@ const UserProfile = () => {
           <div className="humanContainer">
             {humanCases && humanCases.map(single_case => {
               return(
-                <CaseCard key= {single_case.id} item={single_case} caseType='human' />
+                <RectangleCard key= {single_case.id} item={single_case} caseType='human' />
               )
             })}
           </div>
@@ -61,7 +61,7 @@ const UserProfile = () => {
         <div className="animalContainer">
         {animalCases && animalCases.map(single_case => {
           return(
-            <CaseCard key= {single_case.id} item={single_case} caseType='animal' />
+            <RectangleCard key= {single_case.id} item={single_case} caseType='animal' />
           )
         })}
       </div>

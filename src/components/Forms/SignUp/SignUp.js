@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { saveToLocalStorage } from "../../../util/localStorage";
 
@@ -9,15 +9,7 @@ const SignUp = ({edit=false}) => {
   const initial_values = {firstName: '', lastName: '', email: '', password: '', gender: 'male', birthDate: '', image: ''}
   const [formValues, setFormValues] = useState(initial_values);
   const [formErrors, setFormErrors] = useState({});
-  // const [isSubmitted, setIsSubmitted] = useState(false);
   
-
-  // useEffect(() => {
-  //   if(edit){
-
-  //   }
-  // }, [])
-
   const handleOnChange = (e) => {
     const {name, value} = e.target;
     setFormValues({...formValues, [name]: value});

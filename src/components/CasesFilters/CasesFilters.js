@@ -16,14 +16,14 @@ const CasesFilters = () => {
 
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/allCases?caseType=${caseType}`);
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/allCases?caseType=${caseType}&filter_country=${caseFilters.filter_country}&filter_city=${caseFilters.filter_city}&filter_tag=${caseFilters.filter_tag}`);
         setCases(res.data.cases)
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }) 
+  },[caseFilters, caseType]) 
 
   return (
     <div className='cases-filters main-container'>

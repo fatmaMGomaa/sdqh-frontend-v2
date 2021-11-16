@@ -15,25 +15,27 @@ header, footer, main {
   }
 }
 
-.btn-outline-primary, .btn-primary{
+.btn-outline-secondary, .btn-secondary{
   font-weight: 600;
-  border-color: $dark-orange;
   transition: all ease 0.5s;
 }
-.btn-outline-primary{
+
+.btn-outline-secondary{
   color: $dark-orange;
-  &:hover{
-    background-color: $dark-orange;
-    color: white;
-    border-color: $dark-orange;
-  }
 }
 
-.btn-primary{
-  background-color: $dark-orange;
-  &:hover{
-    background-color: $dark-orange;
-    opacity: 0.9;
-    border-color: $dark-orange;
-  }
+.btn-secondary:hover{
+  opacity: 0.9;
+}
+
+.btn-outline-secondary, .btn-secondary, .btn-outline-secondary:hover{
+  border-color: $dark-orange;
+}
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-outline-secondary:hover{
+  color: white;
+}
+
+a.btn.btn-outline-secondary:focus, .btn-secondary:focus{
+  box-shadow: none;
 }

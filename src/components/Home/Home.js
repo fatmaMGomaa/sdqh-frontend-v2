@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import main from "./images/main.jpg";
 import over from "./images/over.jpg";
@@ -16,13 +17,12 @@ const Home = () => {
           <p className='home__header__content__slogan'>تواصل في الخير</p>
           <h2>موقعك بيغير حياة الأخرين</h2>
           <p className='home__header__content__p'>صدقة.نت الموقع الخيري الأول في الوطن العربي لرصد كافة الحالات الإنسانية والحيوانية في مختلف أنحاء الوطن العربي</p>
-          <Button variant="primary" href='/signup'>حساب جديد</Button>
+          <Button variant="secondary" as={Link} to='/signup'>حساب جديد</Button>
         </div>
         <div className='home__header__images'>
-          <img src={main} className='home__header__images-main'></img>
-          <img src={beside} className='home__header__images-beside'></img>
-          <img src={over} className='home__header__images-over'></img>
-          
+          <img src={main} className='home__header__images-main' alt="sdqh-main"></img>
+          <img src={beside} className='home__header__images-beside' alt="sdqh-beside"></img>
+          <img src={over} className='home__header__images-over' alt="sdqh-over"></img>
         </div>
       </div>
       

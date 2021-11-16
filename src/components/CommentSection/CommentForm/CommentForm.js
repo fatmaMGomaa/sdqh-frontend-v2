@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import {AuthContext} from '../../../Contexts/UserProvider'
+import userImage from './defaultUser.jpg'
 import './CommentForm.scss'
 
 const CommentForm = ({caseType, caseId, setComments}) => {
@@ -41,7 +42,7 @@ const CommentForm = ({caseType, caseId, setComments}) => {
   return (
     <div className='write-comment'>
       <div className='comment__image'>
-        <Link to={`/user/${loggedUser.id}`}><img src={loggedUser.image} alt={`${loggedUser.firstName}`} /></Link>
+        {isLogged ? <Link to={`/user/${loggedUser.id}`}><img src={loggedUser.image} alt={`${loggedUser.firstName}`} /></Link> : <img src={userImage} alt='default-user' />}
       </div>
       <form method="POST" name="post_comment" id="post_comment" className='write-comment__form' onSubmit={handleSubmit}>
         <div className='write-comment__form__field'>

@@ -8,8 +8,13 @@
     .nav-item, a.nav-link{
       margin: 0 5px;
       &:hover{
-        color: $blue;
+        color: $dark-orange;
       }
     }
+    .dropdown-menu a.dropdown-item:focus{
+      background-color: $dark-orange;
+      color: white;
+    }
+    
   }
 }

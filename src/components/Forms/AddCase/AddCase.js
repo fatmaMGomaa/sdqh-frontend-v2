@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { useHistory, Link } from "react-router-dom";
 import axios from 'axios'
-import {AuthContext} from '../../../Contexts/UserProvider'
+import {UserContext} from '../../../Contexts/UserProvider'
 import {human_tags, animal_tags, countries, cities} from "../../../util/generic_variables"
 
 import './AddCase.scss'
@@ -9,7 +9,7 @@ import './AddCase.scss'
 
 const AddCase = () => {
   let history = useHistory();
-  const {loggedUser, isLogged, userToken, userLocation} = useContext(AuthContext);
+  const {loggedUser, isLogged, userToken, userLocation} = useContext(UserContext);
   const url = process.env.REACT_APP_BACKEND_URL;
   const initial_values = {caseType: 'human', name: '', country: 'مصر', city: 'القاهرة', address: '', uniqueSign: '', description: '', tag: 'أخرى', mobileNumber: '', image: '', userId: '', lat: '' , lng: '' }
 
@@ -99,7 +99,7 @@ const AddCase = () => {
           <p className='form__p'>{formErrors.description}</p>
           <div className='form__field'>
             <select onChange={handleOnChange} name="country" className='form__input form__select' placeholder=" " required value={formValues['country']}>
-              {countries.map(item => <option value={item}>{item}</option>) }  
+              {Object.values(countries).map(item => <option value={item}>{item}</option>) }  
             </select>
             <label className='form__label' htmlFor=''> البلد</label>
           </div>

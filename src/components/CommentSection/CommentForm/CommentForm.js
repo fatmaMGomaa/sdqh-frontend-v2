@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
-import {AuthContext} from '../../../Contexts/UserProvider'
+import {UserContext} from '../../../Contexts/UserProvider'
 import userImage from './defaultUser.jpg'
 import './CommentForm.scss'
 
 const CommentForm = ({caseType, caseId, setComments}) => {
   const url = process.env.REACT_APP_BACKEND_URL;
-  const {loggedUser, isLogged, userToken} = useContext(AuthContext);
+  const {loggedUser, isLogged, userToken} = useContext(UserContext);
   const [comment, setComment] = useState('')
   
 

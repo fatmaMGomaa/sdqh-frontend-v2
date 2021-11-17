@@ -6,10 +6,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
 import './NavBar.scss';
 import logo from './logo3.png';
-import {AuthContext} from '../../Contexts/UserProvider'
+import {UserContext} from '../../Contexts/UserProvider'
 
 const NavBar = () => {
-  const {loggedUser, isLogged, log_out} = useContext(AuthContext);
+  const {loggedUser, isLogged, log_out} = useContext(UserContext);
 
   return (
     <Navbar collapseOnSelect expand="lg" sticky="top" className="navbar__container justify-content-between">

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { saveToLocalStorage } from "../../../util/localStorage";
-import {AuthContext} from '../../../Contexts/UserProvider'
+import {UserContext} from '../../../Contexts/UserProvider'
 
 import '../Form.scss';
 
@@ -10,7 +10,7 @@ const LogIn = () => {
   const initial_values = {email: '', password: ''}
   const [formValues, setFormValues] = useState(initial_values);
   const [formErrors, setFormErrors] = useState({});
-  const {setLoggedUser, isLogged, setIsLogged, setUserToken} = useContext(AuthContext);
+  const {setLoggedUser, isLogged, setIsLogged, setUserToken} = useContext(UserContext);
 
   const handleOnChange = (e) => {
     const {name, value} = e.target;

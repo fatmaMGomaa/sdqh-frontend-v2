@@ -17,7 +17,7 @@ const Filters = ({caseFilters, setCaseFilters, caseType}) => {
         <form method="POST" name="filters" id="filters" className='form filters_form'>
           <div className='form__field'>
             <select onChange={handleOnChange} name="filter_country" className='form__input form__select' placeholder=" " required value={caseFilters.filter_country}>
-              {countries.map((item, i) => <option value={item} key={i}>{item}</option>) }  
+              {Object.values(countries).map((item, i) => <option value={item} key={i}>{item}</option>) }  
             </select>
             <label className='form__label' htmlFor=''> البلد</label>
           </div>

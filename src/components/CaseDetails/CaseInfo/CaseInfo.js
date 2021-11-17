@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faClock, faPhone, faUser } from '@fortawesome/free-solid-svg-icons'
 import Button from "react-bootstrap/Button";
-import {AuthContext} from '../../../Contexts/UserProvider'
+import {UserContext} from '../../../Contexts/UserProvider'
 
 import './CaseInfo.scss';
 
 const CaseInfo = ({caseInfo, caseUser}) => {
-  const {loggedUser, isLogged, setEditCase} = useContext(AuthContext);
+  const {loggedUser, isLogged, setEditCase} = useContext(UserContext);
 
   const handleEdit = () => {
     setEditCase(caseInfo);

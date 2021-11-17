@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import {AuthContext} from '../../Contexts/UserProvider'
+import {UserContext} from '../../Contexts/UserProvider'
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,7 +11,7 @@ import './UserProfile.scss';
 import RectangleCard from '../Cards/RectangleCard/RectangleCard';
 
 const UserProfile = () => {
-  const {loggedUser, isLogged, userToken} = useContext(AuthContext);
+  const {loggedUser, isLogged, userToken} = useContext(UserContext);
   const { id } = useParams();
 
   const [user, setuser] = useState({});

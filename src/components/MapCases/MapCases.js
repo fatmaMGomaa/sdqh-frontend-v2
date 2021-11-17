@@ -8,6 +8,7 @@ import './MapCases.scss'
 const MapCases = () => {
   const [cases, setCases] = useState([])
   const [coords, setCoords] = useState({})
+  const [childClicked, setChildClicked] = useState(null);
   const [caseFilters, setCaseFilters] = useState({filter_country: '', filter_city: '', filter_tag: ''})
 
   const search = useLocation().search;
@@ -30,16 +31,16 @@ const MapCases = () => {
       }
     };
     fetchData();
-  },[caseFilters])
+  },[caseFilters, caseType])
   return (
     <div className='div-wrapper main-container'>
     <h2>ساعد من حولك</h2>
       <div className='map-cases'>
         <div className='map'>
-          <Map cases={cases} coords={coords} setCoords={setCoords}/>
+          <Map cases={cases} coords={coords} setCoords={setCoords} setChildClicked={setChildClicked}/>
         </div>
         <div className='cases'>
-          <Cases cases={cases} caseType={caseType}/>
+          <Cases cases={cases} caseType={caseType} childClicked={childClicked} />
         </div>
       </div>
     </div>

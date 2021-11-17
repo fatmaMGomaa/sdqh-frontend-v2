@@ -36,7 +36,9 @@ const CaseDetails = () => {
     {!isLoading && (
       <>
       <div className='case-container__content'><CaseInfo caseInfo={caseInfo} caseUser={caseUser}/></div>
-      <div className='case-container__map'><Map coords={{lat: Number(caseInfo.lat), lng: Number(caseInfo.lng)}} singleCase={caseInfo} /></div>
+      <div className='case-container__map'>
+        <Map coords={{lat: Number(caseInfo.lat), lng: Number(caseInfo.lng)}} singleCase={caseInfo} />
+      </div>
       <div className='case-container__comments'>
         <CommentSection comments={comments} caseType={caseType} caseId={id} setComments={setComments} />
       </div>

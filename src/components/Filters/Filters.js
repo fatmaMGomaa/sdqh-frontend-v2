@@ -17,21 +17,21 @@ const Filters = ({caseFilters, setCaseFilters, caseType}) => {
         <form method="POST" name="filters" id="filters" className='form filters_form'>
           <div className='form__field'>
             <select onChange={handleOnChange} name="filter_country" className='form__input form__select' placeholder=" " required value={caseFilters.filter_country}>
-              {countries.map(item => <option value={item}>{item}</option>) }  
+              {countries.map((item, i) => <option value={item} key={i}>{item}</option>) }  
             </select>
             <label className='form__label' htmlFor=''> البلد</label>
           </div>
           <div className='form__field'>
             <select onChange={handleOnChange} name="filter_city" className='form__input form__select' placeholder=" " required value={caseFilters.filter_city}>
               <option value=''>جميع الحالات</option>
-              {country_cities.map(item => <option value={item}>{item}</option>) }  
+              {country_cities.map((item, i) => <option value={item} key={i}>{item}</option>) }  
             </select>
             <label className='form__label' htmlFor=''> المدينة</label>
           </div>
           <div className='form__field'>
             <select onChange={handleOnChange} name="filter_tag" className='form__input form__select' placeholder=" " required value={caseFilters.filter_tag}>
               <option value=''>جميع الحالات</option>
-              {tags.map(item => <option value={item}>{item}</option>) }
+              {tags.map((item, i) => <option value={item} key={i}>{item}</option>) }
             </select>
             <label className='form__label' htmlFor=''>تاج</label>
           </div>

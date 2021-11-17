@@ -21,10 +21,10 @@ const Map = ({ coords={ lat: 30.033333, lng: 31.233334 }, cases=[], singleCase, 
           setCoords && setCoords({ lat: e.center.lat, lng: e.center.lng });
           // setBounds && setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        // onChildClick={(child) => setChildClicked(child)}
+        onChildClick={(child) => setChildClicked && setChildClicked(child)}
       >
-        {cases && cases.map(singlle_case => <Marker key= {singlle_case.id} lat={Number(singlle_case.lat)} lng={Number(singlle_case.lng)} />)}
-        {singleCase && <Marker key= {singleCase.id} lat={Number(singleCase.lat)} lng={Number(singleCase.lng)} extrenal_link={`https://www.google.com/maps/search/?api=1&query=${singleCase.lat},${singleCase.lng}`} />}
+        {cases?.map(singlle_case => <Marker key= {singlle_case.id} lat={Number(singlle_case.lat)} lng={Number(singlle_case.lng)} />)}
+        {singleCase && <Marker lat={Number(singleCase.lat)} lng={Number(singleCase.lng)} extrenal_link={`https://www.google.com/maps/search/?api=1&query=${singleCase.lat},${singleCase.lng}`} text='my text marker'/>}
       </GoogleMapReact>
     </div>
   )

@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 
 import './RectangleCard.scss';
 
-const RectangleCard = ({ item: {id, name, description, image}, caseType }) => {
+const RectangleCard = ({ item: {id, name, description, image}, caseType, refProp, selected=false }) => {
+
+  if(selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
   return (
     <div className='rectangle-card'>
       <Link to={`/case/${id}/?caseType=${caseType}`} className='card-container'>

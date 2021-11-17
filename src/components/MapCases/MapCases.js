@@ -7,17 +7,19 @@ import './MapCases.scss'
 
 const MapCases = () => {
   const [cases, setCases] = useState([])
-  const [coords, setCoordes] = useState({})
+  const [coords, setCoords] = useState({})
   const [caseFilters, setCaseFilters] = useState({filter_country: '', filter_city: '', filter_tag: ''})
 
   const search = useLocation().search;
   const caseType = new URLSearchParams(search).get('caseType');
 
   useEffect(() => {
-
     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-      setCoordes({lat: latitude, lng: longitude });
+      setCoords({lat: latitude, lng: longitude });
     });
+  }, [])
+
+  useEffect(() => {
     
     const fetchData = async () => {
       try {
@@ -34,7 +36,7 @@ const MapCases = () => {
     <h2>ساعد من حولك</h2>
       <div className='map-cases'>
         <div className='map'>
-          <Map cases={cases} coords={coords}/>
+          <Map cases={cases} coords={coords} setCoords={setCoords}/>
         </div>
         <div className='cases'>
           <Cases cases={cases} caseType={caseType}/>

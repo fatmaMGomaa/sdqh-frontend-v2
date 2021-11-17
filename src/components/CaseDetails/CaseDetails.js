@@ -7,6 +7,7 @@ import CaseInfo from './CaseInfo/CaseInfo'
 import CommentSection from '../CommentSection/CommentSection'
 
 const CaseDetails = () => {
+  const [isLoading, setIsLoading] = useState(true)
   const [caseInfo, setCaseInfo] = useState({})
   const [caseUser, setCaseUser] = useState({})
   const [comments, setComments] = useState([])
@@ -22,6 +23,7 @@ const CaseDetails = () => {
         setCaseInfo({...res.data.case, caseType})
         setCaseUser(res.data.case.user)
         setComments(res.data.case.comments)
+        setIsLoading(false)
       } catch (error) {
         console.log(error);
       }
@@ -31,12 +33,15 @@ const CaseDetails = () => {
 
   return (
     <div className='case-container main-container'>
-
+    {!isLoading && (
+      <>
       <div className='case-container__content'><CaseInfo caseInfo={caseInfo} caseUser={caseUser}/></div>
-      <div className='case-container__map'><Map /></div>
+      <div className='case-container__map'><Map coords={{lat: Number(caseInfo.lat), lng: Number(caseInfo.lng)}} singleCase={caseInfo} /></div>
       <div className='case-container__comments'>
-        <CommentSection comments={comments} caseType={caseType} caseId={id} setComments={setComments}/>
+        <CommentSection comments={comments} caseType={caseType} caseId={id} setComments={setComments} />
       </div>
+      </>
+    )}
     </div>
   )
 }

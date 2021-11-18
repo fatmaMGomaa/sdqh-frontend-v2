@@ -15,13 +15,8 @@ const CasesFilters = () => {
   const caseType = new URLSearchParams(search).get('caseType');
 
   useEffect(() => {
-    setCaseFilters({filter_country: 'مصر', filter_city: '', filter_tag: ''});
-  },[caseType]) 
-
-  // useEffect(() => {
-  //   setCaseFilters({...caseFilters ,filter_country: userCountry});
-  //   console.log(userCountry)
-  // },[userCountry])
+    setCaseFilters({filter_country: userCountry, filter_city: '', filter_tag: ''});
+  },[caseType, userCountry]) 
 
   useEffect(() => {
     const fetchData = async () => {

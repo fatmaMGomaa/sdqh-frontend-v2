@@ -14,21 +14,20 @@ export const UserProvider = (props) => {
   const [userCountry, setUserCountry] = useState('مصر');
   const [editCase, setEditCase] = useState({});
 
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await axios.get('https://ip.nf/me.json');
-  //       const country_code = (res.data.ip.country_code)
-  //       let country = country_code && countries[country_code]
-  //       country && setUserCountry(country)
-  //     } catch (error) {
-  //       console.log('ip country error')
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchData()
-  // },[]) 
+    const fetchData = async () => {
+      try {
+        const res = await axios.get('https://ip.nf/me.json');
+        const country_code = (res.data.ip.country_code)
+        let country = country_code && countries[country_code]
+        country && setUserCountry(country)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData()
+  },[]) 
 
   useEffect(() => {
     try{

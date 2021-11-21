@@ -1,5 +1,8 @@
 @import "../../variables.scss";
 .navbar__container{
+  .navbar-toggler, .navbar-toggler-icon{
+    color: $dark-blue;
+  }
   .navbar-nav{
     a.nav-link, a.dropdown-item, button.btn-link{
       color: $dark-blue;

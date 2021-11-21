@@ -4,9 +4,6 @@
   display: flex;
   align-items: center;
   margin:20px 0;
-  @include responsive-max($xs) {
-    
-  }
   &__form{
     flex-grow: 1;
     &__field{

@@ -11,6 +11,7 @@
   @include responsive-max($xmed) {
     max-width: 70rem;
     justify-content: center;
+    margin-top: 50px;
   }
   @include responsive-max($xs) {
     flex-direction: column;

@@ -32,6 +32,7 @@ const MapCases = () => {
     };
     fetchData();
   },[caseFilters, caseType])
+  
   return (
     <div className='div-wrapper main-container'>
     <h2>ساعد من حولك</h2>

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import Button from "react-bootstrap/Button";
 import {UserContext} from '../../../Contexts/UserProvider'
 import userImage from './defaultUser.jpg'
 import './CommentForm.scss'
@@ -47,6 +48,7 @@ const CommentForm = ({caseType, caseId, setComments}) => {
       <form method="POST" name="post_comment" id="post_comment" className='write-comment__form' onSubmit={handleSubmit}>
         <div className='write-comment__form__field'>
           <input type="text" onChange={handleOnChange} value={comment} name="comment_content" className='write-comment__form__input' placeholder="اكتب تعليقك....." required />
+          <Button variant="secondary" onClick={handleSubmit} size="sm">حفظ</Button>
         </div>
       </form>
     </div>
